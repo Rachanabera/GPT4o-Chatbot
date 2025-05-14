@@ -5,10 +5,14 @@ import streamlit as st
 import openai
 
 # configuring openai - api key
-working_dir = os.path.dirname(os.path.abspath(__file__))
-config_data = json.load(open(f"{working_dir}/config.json"))
-OPENAI_API_KEY = config_data["OPENAI_API_KEY"]
-openai.api_key = OPENAI_API_KEY
+from dotenv import load_dotenv
+load_dotenv()
+
+import openai
+import os
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 # configuring strealit page settings
 st.set_page_config(
